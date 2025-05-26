@@ -6,14 +6,6 @@ Purpose of the app is to analyze LINK transfer activity of the wallets staked in
 
 -TODO: Analytics service to analyze transfer data
 
-Startup:
-
-- docker-compose up -d to start postgres and redis
-- npm install (staker-service)
-- npm run dev (staker-service)
-
-Collection of historical contract events will begin from the contract deployment block on the first start
-
 <!-- TODO:
         - dockerize Staker + Transfer services
         - API to trigger sync + start/stop listeners
