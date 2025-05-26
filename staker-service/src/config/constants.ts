@@ -1,0 +1,3 @@
+export const BATCH_SIZE = 10_000;
+export const CONTRACT_ADDRESS = "0xbc10f2e862ed4502144c7d632a3459f49dfcdb5e";
+export const CONTRACT_DEPLOYMENT_BLOCK = 18572190;
