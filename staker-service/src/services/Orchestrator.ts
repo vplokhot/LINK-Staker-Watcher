@@ -66,9 +66,10 @@ export class Orchestrator {
           `Events collected between blocks ${startBlock} and ${toBlock} : ${staked.length} Staked --- ${unStaked.length} unstaked`
         );
 
+        await this.repo.insertMany(events);
+        await this.accountant.processBatch(events);
+
         await Promise.all([
-          this.repo.insertMany(events),
-          this.accountant.processBatch(events),
           this.repo.setLastProcessedBlock(toBlock),
           this.redis.setLastProcessedBlock(toBlock),
         ]);
