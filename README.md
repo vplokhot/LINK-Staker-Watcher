@@ -1,26 +1,17 @@
-Staking Service startup:
-connect to db
-connect to RPC node
-load contract ABI + instantiate contract interface
-determine start block
-check if Redis exists
--> yes, get latest block from Redis and set start block
--> no, get latest block from DB
--> if no records in DB, set contract deployment block as start block
+Purpose of the app is to analyze LINK transfer activity of the wallets staked in the Chainlink Community Pool
+-Staking Service is to be launched first to sync staking events and create registry of active stakers
+-TODO: Transfer service is launched second and listens for token transfers that involve active stakers
+-TODO: Analytics service to analyze transfer data
 
-     ? reconstruct Redis ?
-           -> if Redis is dead, and latest block was set via DB
-                 -> rebuild Redis using DB
+Startup:
 
-     sync on-chain events
-       query events from start block to current block
-         parse and load into DB
-           update Redis
+- docker-compose up -d to start postgres and redis
+- npm install (staker-service)
+- npm run dev (staker-service)
 
-     start real time listner
-         parse and load incoming events into DB
-           update Redis
+Collection of historical contract events will begin from the contract deployment block on the first start
 
 <!-- TODO:
         - dockerize Staker + Transfer services
+        - API to trigger sync + start/stop listeners
  -->
